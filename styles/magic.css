@@ -1,0 +1,103 @@
+:root {
+    --purple: rgb(123,31,162);
+    --violet: rgb(103,58,183);
+    --pink: rgb(244,143,177);
+}
+
+@keyframes background-pan{
+    from{
+        background-position: 0% center;
+    }
+
+    to{
+        background-position: -200% center;
+    }
+}
+
+@keyframes scale{
+    from, to {
+        transform: scale(0);
+
+    }
+    50%{
+        transform: scale(1);
+    }
+}
+
+@keyframes rotate {
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(180deg);
+    }
+    
+}
+
+body{
+    background-color: rgb(10,10,10);
+    margin: 0px;
+    overflow: hidden;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+}
+
+h1{
+    font-family: "Rubik",sans-serif;
+    font-size: clamp(2em,2vw,4em);
+    color: white;
+    font-weight: 400;
+    margin: 0px;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 > .magic > .magic-text{
+    animation: background-pan 2s linear infinite;
+
+    background: linear-gradient(
+        to right,
+        var(--purple),
+        var(--violet),
+        var(--pink),
+        var(--purple)
+    );
+    background-size: 200%;
+    white-space: nowrap;
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+h1 > .magic {
+    display: inline-block;
+    position: relative;   
+}
+
+h1 > .magic > .magic-star{
+    position: absolute;
+    display: block;
+    --size: clamp(20px, 1.5vw, 30px);
+
+    height: var(--size);
+    left: var(--star-left);
+    top: var(--star-top);
+    width: var(--size);
+    animation: scale 700ms ease forwards;
+
+}
+
+h1 > .magic > .magic-star > svg{
+    display: block;
+    opacity: 0.7;
+    animation: rotate 700ms linear infinite;
+    
+}
+
+h1 > .magic > .magic-star > svg > path{
+    fill: var(--violet);
+
+}
+
+
